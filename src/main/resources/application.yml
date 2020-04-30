@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  connection-timeout: 5s
+  tomcat:
+    max-threads: 100
+zuul:
+  routes:
+    proxy:
+      path: /**
+environmentMap:
+  DEV: "http://localhost:7001/service/WebService?wsdl"
+  QA: "http://localhost:7002/service/WebService?wsdl"
+  UAT: "http://localhost:7003/service/WebService?wsdl"
+logging:
+  pattern:
+    console: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework.web: INFO
+    com.charter: INFO
